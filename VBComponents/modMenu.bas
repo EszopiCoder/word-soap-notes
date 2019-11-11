@@ -64,9 +64,11 @@ Sub KeyBindOn_Click(control As IRibbonControl)
         MsgBox "Key binding is activated." & vbNewLine & _
         "Template Detected: True", vbInformation
     End If
+    Call modEvents.StartEvents
 End Sub
 Sub KeyBindOff_Click(control As IRibbonControl)
     Call modKeyBind.RemoveKeyBinding
+    Call modEvents.StartEvents
 End Sub
 Sub LoadTemplate_Click(control As IRibbonControl)
     Dim arrAddIn As AddIn
@@ -86,6 +88,7 @@ Sub LoadTemplate_Click(control As IRibbonControl)
     
     ' Load template to dictionary
     Call modDictionary.OpenCSV(strPath)
+    Call modEvents.StartEvents
 End Sub
 Sub SaveTemplate_Click(control As IRibbonControl)
     Dim arrAddIn As AddIn
@@ -111,12 +114,15 @@ Sub SaveTemplate_Click(control As IRibbonControl)
     
     ' Save template to CSV
     Call modDictionary.SaveAsCSV(strPath)
+    Call modEvents.StartEvents
 End Sub
 Sub TemplateEditor_Click(control As IRibbonControl)
     Call modDictionary.OpenEditor
+    Call modEvents.StartEvents
 End Sub
 Sub getInfo_Click(control As IRibbonControl)
     MsgBox "'SOAP Notes' was created by EszopiCoder, PharmD Student." & vbNewLine & _
 "Open Source (https://github.com/EszopiCoder/word-soap-notes)" & vbNewLine & _
         "Please report bugs and send suggestions to pharm.coder@gmail.com", vbInformation
+    Call modEvents.StartEvents
 End Sub
