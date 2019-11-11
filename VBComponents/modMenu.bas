@@ -117,6 +117,6 @@ Sub TemplateEditor_Click(control As IRibbonControl)
 End Sub
 Sub getInfo_Click(control As IRibbonControl)
     MsgBox "'SOAP Notes' was created by EszopiCoder, PharmD Student." & vbNewLine & _
-        "Open Source (https://github.com/EszopiCoder/)" & vbNewLine & _
+        "Open Source (https://github.com/EszopiCoder/soap-notes)" & vbNewLine & _
         "Please report bugs and send suggestions to pharm.coder@gmail.com", vbInformation
 End Sub
