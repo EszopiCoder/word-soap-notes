@@ -66,7 +66,8 @@ Public Sub InsertTemplate()
         Selection.MoveLeft wdCharacter, _
             currentPosition.Information(wdFirstCharacterColumnNumber), _
             wdExtend                                                ' Select line before cursor
-        TemplateName = Selection.Range.Text                         ' Set entire to variable
+        TemplateName = Selection.Range.Text                         ' Set entire line to variable
+        If InStrRev(TemplateName, "#") = 0 Then GoTo DefaultFx      ' Ensure token character is typed
         TemplateName = Right(TemplateName, _
             Len(TemplateName) - InStrRev(TemplateName, "#"))        ' Extract shortcut name
         currentPosition.Select                                      ' Return cursor to original position
@@ -84,11 +85,13 @@ Public Sub InsertTemplate()
         Selection.TypeText TemplateText                             ' Insert shortcut text
     End If
     
+    Set currentPosition = Nothing
     Application.ScreenUpdating = True
     Exit Sub
 
 DefaultFx:
     ' Perform normal function and return screen updating to normal
+    currentPosition.Select
     Selection.TypeText vbNewLine
     Set currentPosition = Nothing
     Application.ScreenUpdating = True
