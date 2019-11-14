@@ -12,5 +12,5 @@ To run the program, follow these steps:
 
 1. Click the 'SOAP Notes' tab
 2. Click the 'Load Template' button and open a CSV file
-3. Click the 'Activate' button
+3. Click the 'Key Bind' button
 4. Start using the program!
