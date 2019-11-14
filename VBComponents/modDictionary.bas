@@ -32,6 +32,13 @@ Public Function DictionaryExists() As Boolean
         DictionaryExists = True
     End If
 End Function
+Public Function DictionaryCount() As Long
+    If DictionaryExists = False Then
+        Exit Function
+    Else
+        DictionaryCount = objTemplates.Count
+    End If
+End Function
 Public Sub OpenEditor()
     If objTemplates Is Nothing Then
         Call InitializeDictionary
