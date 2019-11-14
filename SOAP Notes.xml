@@ -3,19 +3,13 @@
       <tabs>
          <tab id="TabSOAP" label="SOAP Notes">
             <group id="SOAPTemplate" label="SOAP Templates">
-               <button id="KeyBindOn"
-                   imageMso = "ChangeToAcceptInvitation"
-                   label = "Activate"
-                   screentip="Activate Key Bind"
-                   supertip = "Turn key bind on."
+               <toggleButton id="KeyBindOn"
+                   imageMso = "ImeDictionaryUpdate"
+                   label = "Key Bind"
+                   screentip="Key Bind"
+                   supertip = "Turn key bind on/off."
                    onAction = "KeyBindOn_Click"
-                   size="large"/>
-               <button id="KeyBindOff"
-                   imageMso = "ChangeToDeclineInvitation"
-                   label = "Deactivate"
-                   screentip="Deactivate Key Bind"
-                   supertip = "Turn key bind off."
-                   onAction = "KeyBindOff_Click"
+                   getPressed = "KeyBindOff_Click"
                    size="large"/>
                <button id="LoadTemplate"
                    imageMso = "ImportTextFile"
