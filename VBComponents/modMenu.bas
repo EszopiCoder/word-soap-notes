@@ -4,19 +4,13 @@ Attribute VB_Name = "modMenu"
 '      <tabs>
 '         <tab id="TabSOAP" label="SOAP Notes">
 '            <group id="SOAPTemplate" label="SOAP Templates">
-'               <button id="KeyBindOn"
-'                   imageMso = "ChangeToAcceptInvitation"
-'                   label = "Activate"
-'                   screentip="Activate Key Bind"
+'               <toggleButton id="KeyBindOn"
+'                   imageMso = "ImeDictionaryUpdate"
+'                   label = "Key Bind"
+'                   screentip="Key Bind"
 '                   supertip = "Turn key bind on."
 '                   onAction = "KeyBindOn_Click"
-'                   size="large"/>
-'               <button id="KeyBindOff"
-'                   imageMso = "ChangeToDeclineInvitation"
-'                   label = "Deactivate"
-'                   screentip="Deactivate Key Bind"
-'                   supertip = "Turn key bind off."
-'                   onAction = "KeyBindOff_Click"
+'                   getPressed = "KeyBindOff_Click"
 '                   size="large"/>
 '               <button id="LoadTemplate"
 '                   imageMso = "ImportTextFile"
@@ -55,20 +49,18 @@ Attribute VB_Name = "modMenu"
 
 Option Explicit
 
-Sub KeyBindOn_Click(control As IRibbonControl)
-    Call modKeyBind.TemplateKeyBinding
-    If modDictionary.DictionaryExists = False Then
+Sub KeyBindOn_Click(control As IRibbonControl, pressed as Boolean)
+    If pressed = True Then
+        Call modKeyBind.TemplateKeyBinding
         MsgBox "Key binding is activated." & vbNewLine & _
-        "Template Detected: False", vbInformation
+        "Template Detected: " & modDictionary.DictionaryExists, vbInformation
     Else
-        MsgBox "Key binding is activated." & vbNewLine & _
-        "Template Detected: True", vbInformation
+        Call modKeyBind.RemoveKeyBinding
     End If
-    Call modEvents.StartEvents
+    Call modEvents.StartEvents  
 End Sub
-Sub KeyBindOff_Click(control As IRibbonControl)
-    Call modKeyBind.RemoveKeyBinding
-    Call modEvents.StartEvents
+Sub KeyBindOff_Click(control As IRibbonControl, ByRef returnedVal)
+    returnedVal = False
 End Sub
 Sub LoadTemplate_Click(control As IRibbonControl)
     Dim arrAddIn As AddIn
