@@ -101,6 +101,12 @@ Sub SaveTemplate_Click(control As IRibbonControl)
         Exit Sub
     End If
     
+    ' Check if template dictionary is empty
+    If modDictionary.DictionaryCount = 0 Then
+        MsgBox "Template dictionary is empty.", vbExclamation
+        Exit Sub
+    End If
+    
     ' Retrieve strPath of add in
     For Each arrAddIn In AddIns
         If arrAddIn.Name = ThisDocument.Name Then
